@@ -6,11 +6,10 @@ import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -20,12 +19,9 @@ import { AppComponent } from './app.component';
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000',
     }),
+    HttpClientModule,
   ],
-  providers: [
-  ],
-  bootstrap: [
-    AppComponent,
-  ],
+  providers: [],
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}
