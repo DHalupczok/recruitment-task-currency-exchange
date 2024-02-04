@@ -9,8 +9,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { CompleteCurrency, operation } from '../../Interface';
-import { iif, of, switchMap } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { catchError, iif, of, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-currency-exchange-form',
@@ -56,12 +55,19 @@ export class CurrencyExchangeFormComponent implements OnInit {
             const startCurrency = newFormValue.startCurrency as string;
             const startMoneyQty = newFormValue.startMoneyQty as number;
             const targetCurrency = newFormValue.targetCurrency as string;
-            return this.currencyExchangeService.getChangedMoney$({
-              operation,
-              targetCurrency,
-              startMoneyQty,
-              startCurrency,
-            });
+            return this.currencyExchangeService
+              .getChangedMoney$({
+                operation,
+                targetCurrency,
+                startMoneyQty,
+                startCurrency,
+              })
+              .pipe(
+                catchError(err => {
+                  console.warn(err);
+                  return of(null);
+                })
+              );
           })
         ),
         of(null)

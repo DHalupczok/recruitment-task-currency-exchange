@@ -28,6 +28,23 @@ Before you start, you need to install and configure the tools:
 
 ## Getting started
 
+### Launching application 
+
+**1.** Run app in development mode
+```
+npm install
+ng serve
+```
+
+**2.** Run application as a docker container
+
+Go to folder with cloned application and run wsl in there, type following commands:
+```
+docker build -t recruitment-task-currency-exchange .
+docker run -d -p 8080:80 recruitment-task-currency-exchange 
+```
+Go to http://localhost:8080/ 
+
 
 ### Create the Angular application
 
