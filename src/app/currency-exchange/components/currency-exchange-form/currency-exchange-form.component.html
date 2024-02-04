@@ -1,14 +1,15 @@
 <form [formGroup]="form">
   <div class="m-2 bg-primary p-1 border rounded text-white">
     <div class="mx-2">
-      <label for="sell">Sprzedarz</label>
+      <label for="sell">Sprzedaż</label>
       <input
         formControlName="operation"
         class="mx-2"
         type="radio"
         value="ask"
         name="operation"
-        id="sell" />
+        id="sell"
+      />
     </div>
     <div class="mx-2">
       <label for="buy">Kupno</label>
@@ -18,7 +19,8 @@
         type="radio"
         value="bid"
         name="operation"
-        id="buy" />
+        id="buy"
+      />
     </div>
   </div>
   <div class="m-2 bg-primary p-1 border rounded text-white">
@@ -27,14 +29,16 @@
       formControlName="startCurrency"
       class="mx-1 rounded"
       name="start-currency"
-      id="start-currency">
+      id="start-currency"
+    >
       <option value="PLN">złoty polski</option>
       <option
         *ngFor="
           let availableCurrency of availableCurrencyList$ | async;
           trackBy: trackByCurrencyCode
         "
-        [value]="availableCurrency.code">
+        [value]="availableCurrency.code"
+      >
         {{ availableCurrency.currency }}
       </option>
     </select>
@@ -46,7 +50,8 @@
       class="mx-1 rounded"
       type="number"
       name="start-money-qty"
-      id="start-money-qty" />
+      id="start-money-qty"
+    />
   </div>
   <div class="m-2 bg-primary p-1 border rounded text-white">
     <label for="target-currency">Waluta docelowa</label>
@@ -54,14 +59,16 @@
       formControlName="targetCurrency"
       class="mx-1 rounded"
       name="target-currency"
-      id="target-currency">
+      id="target-currency"
+    >
       <option value="PLN">złoty polski</option>
       <option
         *ngFor="
           let availableCurrency of availableCurrencyList$ | async;
           trackBy: trackByCurrencyCode
         "
-        [value]="availableCurrency.code">
+        [value]="availableCurrency.code"
+      >
         {{ availableCurrency.currency }}
       </option>
     </select>
@@ -69,6 +76,6 @@
 </form>
 
 <div *ngIf="moneyExchangeResult | async as result" class="bg-success">
-  <p>Kwota wymiany: {{ result.qty }}</p>
-  <p>Kurs wymiany: {{ result.exchangeRate }}</p>
+  <p>Kwota wymiany: {{ result.qty | number: "1.2-2" }}</p>
+  <p>Kurs wymiany: {{ result.exchangeRate | number: "1.2-4" }}</p>
 </div>
