@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 interface RandomPictureJSON {
   provider: string;
@@ -23,9 +24,8 @@ export class RandomPictureService {
     params = params.append('width', width);
     if (category) params = params.append('category', category);
 
-    return this.http.get<RandomPictureJSON>(
-      'https://random.imagecdn.app/v1/image',
-      { params }
-    );
+    return this.http.get<RandomPictureJSON>(environment.randomPictureApiUrl, {
+      params,
+    });
   }
 }

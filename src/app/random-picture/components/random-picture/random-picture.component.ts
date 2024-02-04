@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RandomPictureService } from '../../services/random-picture.service';
-import { catchError, interval, startWith, switchMap, tap } from 'rxjs';
+import { catchError, interval, startWith, switchMap } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 

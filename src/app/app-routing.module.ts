@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RandomPictureModule } from './random-picture/random-picture.module';
 
 const routes: Routes = [
   {
@@ -8,6 +7,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./random-picture/random-picture.module').then(
         m => m.RandomPictureModule
+      ),
+  },
+  {
+    path: 'currency-exchange',
+    loadChildren: () =>
+      import('./currency-exchange/currency-exchange.module').then(
+        m => m.CurrencyExchangeModule
       ),
   },
 ];
